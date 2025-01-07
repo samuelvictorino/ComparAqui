@@ -64,7 +64,7 @@
 
             try {
                 // Aqui será implementada a chamada para a API do Supabase
-                const resultados = await mockBusca(busca); // Substituir pela chamada real
+                const resultados = await buscarProduto(busca); // Substituir pela chamada real
                 mostrarResultados(resultados);
             } catch (error) {
                 resultadosDiv.innerHTML = `

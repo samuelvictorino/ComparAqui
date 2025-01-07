@@ -1,5 +1,17 @@
 // assets/js/services/magalu-api.js
 
+// Adicionar no arquivo magalu-api.js
+
+class MagaluAPIError extends Error {
+    constructor(message, status, code) {
+        super(message);
+        this.name = 'MagaluAPIError';
+        this.status = status;
+        this.code = code;
+    }
+}
+
+
 class MagaluAPI {
     constructor() {
         this.BASE_URL = 'https://api.magalu.com/v1';
@@ -40,9 +52,16 @@ class MagaluAPI {
                 })
             });
 
-            if (!response.ok) {
-                throw new Error(`Erro na API Magalu: ${response.status}`);
-            }
+            
+// Adicionar no método searchProducts
+if (!response.ok) {
+    const errorData = await response.json();
+    throw new MagaluAPIError(
+        errorData.message || 'Erro na API Magalu',
+        response.status,
+        errorData.code
+    );
+}
 
             const data = await response.json();
             return this.formatProducts(data);
@@ -50,8 +69,10 @@ class MagaluAPI {
         } catch (error) {
             console.error('Erro ao buscar produtos na Magalu:', error);
             throw error;
-        }
+        }c
     }
+
+    
 
     /**
      * Formatar produtos para o padrão da aplicação

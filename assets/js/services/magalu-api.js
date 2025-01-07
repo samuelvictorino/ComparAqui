@@ -3,8 +3,8 @@
 class MagaluAPI {
     constructor() {
         this.BASE_URL = 'https://api.magalu.com/v1';
-        this.API_KEY = 'YOUR_MAGALU_API_KEY'; // Substituir pela sua chave
-        this.PARTNER_ID = 'YOUR_PARTNER_ID';   // Substituir pelo seu ID de parceiro
+        this.API_KEY = '6b4282a5-05ba-42af-afa7-e54547d4d585'; // Substituir pela sua chave
+        this.PARTNER_ID = '524cf852-20ee-4281-9513-f816f0f31a71';   // Substituir pelo seu ID de parceiro
     }
 
     /**

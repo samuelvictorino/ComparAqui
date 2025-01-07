@@ -332,6 +332,19 @@ async fetchProducts(query, page) {
     }
 }
 
+// No seu código principal
+try {
+    const products = await magaluAPI.searchProducts('smartphone', 1, 12);
+    console.log('Produtos encontrados:', products);
+} catch (error) {
+    if (error instanceof MagaluAPIError) {
+        console.error('Erro específico da API:', error.message);
+    } else {
+        console.error('Erro genérico:', error);
+    }
+}
+
+
 // Inicializar aplicação quando o DOM estiver carregado
 document.addEventListener('DOMContentLoaded', () => {
     window.comparAqui = new ComparAqui();

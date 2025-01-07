@@ -1,3 +1,5 @@
+// Adicionar no início do arquivo main.js
+import { magaluAPI } from './services/magalu-api.js';
 import { logger } from './logger.js';
 import { Analytics } from './analytics.js';
 
@@ -122,29 +124,28 @@ class ComparAqui {
      * @param {string} query - Termo de busca
      * @param {number} page - Número da página
      */
-    async fetchProducts(query, page) {
-        const startTime = performance.now();
-        try {
-            const response = await fetch(
-                `${this.API_URL}?query=${encodeURIComponent(query)}&page=${page}&limit=${this.ITEMS_PER_PAGE}`
-            );
 
-            if (!response.ok) {
-                throw new Error('Falha ao buscar produtos');
-            }
+// Atualizar o método fetchProducts da classe ComparAqui
+async fetchProducts(query, page) {
+    const startTime = performance.now();
+    try {
+        // Buscar produtos da Magalu
+        const magaluResults = await magaluAPI.searchProducts(query, page, this.ITEMS_PER_PAGE);
+        
+        // Registrar sucesso da chamada
+        logger.logApiCall('magalu/search', 'POST', performance.now() - startTime, 200);
+        
+        // Atualizar total de páginas
+        this.totalPages = magaluResults.totalPages;
+        
+        return magaluResults.products;
 
-            const data = await response.json();
-            
-            // Registrar chamada da API
-            logger.logApiCall('/search', 'GET', performance.now() - startTime, response.status);
-            
-            return data;
-
-        } catch (error) {
-            logger.logApiCall('/search', 'GET', performance.now() - startTime, 'error', error.message);
-            throw new Error('Erro ao conectar com o servidor');
-        }
+    } catch (error) {
+        // Registrar erro
+        logger.logApiCall('magalu/search', 'POST', performance.now() - startTime, 'error', error.message);
+        throw new Error('Erro ao buscar produtos na Magazine Luiza');
     }
+}
 
     /**
      * Buscar sugestões de busca

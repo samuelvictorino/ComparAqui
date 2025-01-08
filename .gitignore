@@ -1,1 +1,10 @@
-.gitignore
+# Ambiente
+.env
+.env.local
+.env.*.local
+
+# Dependências
+node_modules/
+
+# Logs
+*.log

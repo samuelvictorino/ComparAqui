@@ -7,6 +7,7 @@ import Header from '../components/Header';
 import SearchBar from '../components/SearchBar';
 import Results from '../components/Results';
 import theme from '../styles/theme';
+import { fetchSearchResults } from '../services/api';
 
 export default function Home() {
   const [searchResults, setSearchResults] = useState([]);
@@ -15,8 +16,7 @@ export default function Home() {
   const handleSearch = async (query) => {
     setLoading(true);
     try {
-      const response = await fetch(`/api/search?q=${encodeURIComponent(query)}`);
-      const data = await response.json();
+      const data = await fetchSearchResults(query);
       setSearchResults(data);
     } catch (error) {
       console.error('Error:', error);
@@ -29,8 +29,8 @@ export default function Home() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Head>
-        <title>ComparAqui - Compare preços, economize aqui</title>
-        <meta name="description" content="Compare preços, economize aqui" />
+        <title>ComparAqui - Descubra o valor, compare com precisão</title>
+        <meta name="description" content="Descubra o valor, compare com precisão" />
       </Head>
       <Container maxWidth="lg">
         <Box sx={{ my: 4 }}>

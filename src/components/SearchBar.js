@@ -4,6 +4,7 @@ import SearchIcon from '@mui/icons-material/Search';
 
 export default function SearchBar({ onSearch, loading }) {
   const [query, setQuery] = useState('');
+  const [isFocused, setIsFocused] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -26,9 +27,10 @@ export default function SearchBar({ onSearch, loading }) {
         mb: 4,
         borderRadius: '15px',
         backgroundColor: '#1E1E1E',
-        boxShadow: '8px 8px 16px #141416, -8px -8px 16px #1E1E1E',
+        boxShadow: isFocused ? '0 0 10px #00FFCC' : '8px 8px 16px #0a0a0a, -8px -8px 16px #2a2a2a',
+        transition: 'box-shadow 0.3s ease',
         '&:hover': {
-          boxShadow: 'inset 4px 4px 8px #141416, inset -4px -4px 8px #1E1E1E'
+          boxShadow: 'inset 4px 4px 8px #0a0a0a, inset -4px -4px 8px #2a2a2a'
         }
       }}
     >
@@ -37,11 +39,13 @@ export default function SearchBar({ onSearch, loading }) {
         placeholder="Buscar produtos para comparar preços..."
         value={query}
         onChange={(e) => setQuery(e.target.value)}
+        onFocus={() => setIsFocused(true)}
+        onBlur={() => setIsFocused(false)}
         disabled={loading}
       />
-      <IconButton 
-        type="submit" 
-        sx={{ p: '10px', color: '#00FFCC' }} 
+      <IconButton
+        type="submit"
+        sx={{ p: '10px', color: '#00FFCC', transition: 'color 0.3s ease', '&:hover': { color: '#FF3366' } }}
         disabled={loading}
       >
         <SearchIcon />

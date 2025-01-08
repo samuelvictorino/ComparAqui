@@ -6,6 +6,9 @@ const theme = createTheme({
     primary: {
       main: '#00FFCC',
     },
+    secondary: {
+      main: '#FF3366',
+    },
     background: {
       default: '#141416',
       paper: '#1E1E1E',
@@ -24,6 +27,11 @@ const theme = createTheme({
         root: {
           borderRadius: '12px',
           textTransform: 'none',
+          transition: 'background-color 0.3s ease',
+          '&:hover': {
+            backgroundColor: '#00FFCC',
+            color: '#141416'
+          }
         },
       },
     },

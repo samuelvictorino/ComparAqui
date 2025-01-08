@@ -36,7 +36,7 @@ export default function SearchBar({ onSearch, loading }) {
     >
       <InputBase
         sx={{ ml: 1, flex: 1, color: 'text.primary' }}
-        placeholder="Buscar produtos para comparar preços..."
+        placeholder="Buscar produtos no ComparAqui..."
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         onFocus={() => setIsFocused(true)}

@@ -37,7 +37,7 @@ export default function Header() {
         variant="subtitle1"
         sx={{ color: 'text.secondary', transition: 'color 0.3s ease', '&:hover': { color: '#00FFCC' } }}
       >
-        Compare preços, economize aqui
+        Se tem valor, tá aqui!
       </Typography>
     </Box>
   );

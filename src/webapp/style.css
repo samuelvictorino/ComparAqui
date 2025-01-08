@@ -1,0 +1,15 @@
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #141416;
+  color: #E0E0E0;
+}
+
+input, button {
+  border-radius: 15px;
+  box-shadow: 8px 8px 16px #0e0e0e, -8px -8px 16px #262626;
+}
+
+button:hover {
+  box-shadow: inset 4px 4px 8px #0e0e0e, inset -4px -4px 8px #262626;
+}

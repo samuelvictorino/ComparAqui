@@ -31,13 +31,13 @@ export default function Header() {
           }
         }}
       >
-        SmartCompara
+        ComparAqui
       </Typography>
       <Typography
         variant="subtitle1"
         sx={{ color: 'text.secondary', transition: 'color 0.3s ease', '&:hover': { color: '#00FFCC' } }}
       >
-        Compare preços inteligentemente e economize
+        Compare preços, economize aqui
       </Typography>
     </Box>
   );

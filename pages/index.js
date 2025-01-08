@@ -29,8 +29,8 @@ export default function Home() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Head>
-        <title>SmartCompara - Comparador Inteligente de Preços</title>
-        <meta name="description" content="Compare preços inteligentemente e economize" />
+        <title>ComparAqui - Compare preços, economize aqui</title>
+        <meta name="description" content="Compare preços, economize aqui" />
       </Head>
       <Container maxWidth="lg">
         <Box sx={{ my: 4 }}>
